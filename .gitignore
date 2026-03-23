@@ -1,0 +1,52 @@
+# --- Spring Boot 표준 설정 (Initializr 제공) ---
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# --- 보안 및 환경 설정 추가 ---
+
+# [보안] 데이터베이스 비밀번호 및 API 키 제외 (가장 중요!)
+src/main/resources/application.yaml
+.env
+
+# [빌드/임시] 운영체제 및 빌드 임시 파일 제외
+.DS_Store
+Thumbs.db
+.gradletasknamecache
+
+# [로그] 실행 시 생성되는 로그 파일 제외
+*.log
