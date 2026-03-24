@@ -17,7 +17,18 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/members/signup", "/api/members/login").permitAll()
                 .anyRequest().authenticated()
+            )
+
+            .logout(logout -> logout
+                .logoutUrl("/api/members/logout")
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setStatus(200);
+                    response.setCharacterEncoding("UTF-8");
+                    response.setContentType("text/plain");
+                    response.getWriter().write("로그아웃 성공");
+                })
             );
+
         return http.build();
     }
 }

@@ -33,4 +33,9 @@ public class MemberController {
         }
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@RequestBody LoginRequestDto requestDto){
+        return ResponseEntity.ok("로그아웃 되었습니다.");
+    }
+
 }
