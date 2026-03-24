@@ -1,6 +1,7 @@
 package com.tighttrip.domain.member.controller;
 
 import com.tighttrip.domain.member.dto.MemberRequestDto;
+import com.tighttrip.domain.member.dto.LoginRequestDto;
 import com.tighttrip.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,4 +22,15 @@ public class MemberController {
         memberService.join(requestDto);
         return ResponseEntity.ok("회원가입이 완료되었습니다.");
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequestDto requestDto){
+        try {
+            Long memberId = memberService.login(requestDto);
+            return ResponseEntity.ok("로그인 성공(회원ID:" + memberId + ")");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }

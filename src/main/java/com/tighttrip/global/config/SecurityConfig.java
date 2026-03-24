@@ -6,8 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
+@Configuration // 설정파일이라는 알림
+@EnableWebSecurity // 스프링 시큐리티 기능을 활성화
 public class SecurityConfig {
 
     @Bean
@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/members/signup").permitAll()
+                .requestMatchers("/api/members/signup", "/api/members/login").permitAll()
                 .anyRequest().authenticated()
             );
         return http.build();
